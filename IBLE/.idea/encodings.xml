@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/birth_inputbox_basic.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gender_box_centerline.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/man_button_off.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/man_button_on.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/woman_button_off.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/woman_button_on.png" charset="x-windows-949" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
