@@ -2,9 +2,11 @@ package com.isoft.ible;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +20,7 @@ import java.util.Calendar;
 public class BirthActivity extends ActionBarActivity implements View.OnClickListener {
 
     Button next,male,female,birth;
+    private Context mContext;
     private String selectGender = "";
     private Calendar mCalen;
     private int day;
@@ -31,6 +34,8 @@ public class BirthActivity extends ActionBarActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_birth);
+
+        mContext = this;
 
         next = (Button) findViewById(R.id.nextbtn);
         male = (Button) findViewById(R.id.manbtn);
@@ -56,10 +61,12 @@ public class BirthActivity extends ActionBarActivity implements View.OnClickList
                     case R.id.manbtn://male
                         male.setBackgroundResource(R.drawable.man_button_on);
                         female.setBackgroundResource(R.drawable.woman_button_off);
+                        selectGender = "M";
                         break;
                     case R.id.womanbtn://female
                         male.setBackgroundResource(R.drawable.man_button_off);
                         female.setBackgroundResource(R.drawable.woman_button_on);
+                        selectGender = "F";
                         break;
                 }
             }
@@ -96,11 +103,36 @@ public class BirthActivity extends ActionBarActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getApplicationContext(),"oo",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"oo",Toast.LENGTH_SHORT).show();
+        if (!checkValidation()) {
+            return;
+        }
+
         Intent i = new Intent(BirthActivity.this, LocationActivity.class);
 
         startActivity(i);
         finish();
+    }
+
+    private boolean checkValidation() {
+        //Toast.makeText(context, "네트워크를 찾을 수 없습니다. 네트워크 상태를 확인하세요.", Toast.LENGTH_SHORT).show();
+
+        if (selectGender.equals("")) {
+            Toast t = Toast.makeText(mContext, "성별을 선택해주세요.", Toast.LENGTH_SHORT);
+            t.setGravity(Gravity.CENTER, 0, 0);
+            t.show();
+            return false;
+        }
+
+        String sBirth = birth.getText().toString();
+        if (sBirth.equals("생년월일")) {
+            Toast t = Toast.makeText(mContext, "생년월일을 입력해주세요.", Toast.LENGTH_SHORT);
+            t.setGravity(Gravity.CENTER, 0, 0);
+            t.show();
+            return false;
+        }
+
+        return true;
     }
 
     @Override

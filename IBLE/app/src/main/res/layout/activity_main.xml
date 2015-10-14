@@ -5,11 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="스탬프 투어 시작!"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="50sp"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/stampimg"/>
 </LinearLayout>
