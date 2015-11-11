@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18dp"
-        android:text="EditText에 텍스트 입력 후\nNFC 태그를 갖다 대면 자동으로 써집니다...\n\nNFC 태그에 쓸 텍스트 :" />
+        android:text="NFC 태그에 쓸 텍스트 :" />
     <EditText
         android:id="@+id/writeText"
         android:layout_width="match_parent"
