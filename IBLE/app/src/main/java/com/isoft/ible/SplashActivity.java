@@ -3,6 +3,8 @@ package com.isoft.ible;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,10 +17,12 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //ImageView imgMain;
-        //imgMain = new ImageView(this);
-        //imgMain.setBackground(R.drawable.);
-        //setContentView(imgMain);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        ImageView imgMain;	//최초 App 시작시 보여질 이미지
+        imgMain = new ImageView(this);
+        imgMain.setBackgroundResource(R.mipmap.splash);
+        setContentView(imgMain);
 
         setTimer();
     }
@@ -39,9 +43,9 @@ public class SplashActivity extends Activity {
 
             Intent i;
             //if(checkValue == 0)//최초실행일 때
-                i = new Intent(SplashActivity.this, BirthActivity.class);
+            //    i = new Intent(SplashActivity.this, BirthActivity.class);
             //else//아닐 때
-            //    i = new Intent(SplashActivity.this, MainActivity.class);
+                i = new Intent(SplashActivity.this, MainLoadActivity.class);
 
             startActivity(i);
             finish();

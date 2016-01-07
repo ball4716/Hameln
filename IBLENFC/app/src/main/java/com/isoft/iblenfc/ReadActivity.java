@@ -135,7 +135,7 @@ public class ReadActivity extends ActionBarActivity {
 	}
 
 	// NFC 태그 스캔시 호출되는 메소드
-	public void onNewIntent(Intent passedIntent) {
+	public void tagId(Intent passedIntent) {
 		// NFC 태그
 		Tag tag = passedIntent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
 		if (tag != null) {

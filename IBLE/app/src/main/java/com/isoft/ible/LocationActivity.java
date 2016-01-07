@@ -1,54 +1,54 @@
 package com.isoft.ible;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class LocationActivity extends Activity {
 
-    private ListView m_ListView;
-    private ArrayAdapter<String> m_Adapter;
+    private ListView mListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        m_Adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
+        mListView = (ListView) findViewById(R.id.list_location);
 
-        m_ListView = (ListView) findViewById(R.id.location);
+        ArrayList<Listviewitem> data = new ArrayList<>();
 
-        m_ListView.setAdapter(m_Adapter);
+        Listviewitem incheon = new Listviewitem(R.mipmap.incheon, "인천대");
+        Listviewitem seoul = new Listviewitem(R.mipmap.seoul, "서울대");
+        Listviewitem inha = new Listviewitem(R.mipmap.inha, "인하대");
 
-        m_ListView.setOnItemClickListener(onClickListItem);
+        data.add(incheon);
+        data.add(seoul);
+        data.add(inha);
 
-        m_Adapter.add("인천");
-        m_Adapter.add("서울");
-        m_Adapter.add("경기");
-        m_Adapter.add("강원");
-        m_Adapter.add("광주");
-        m_Adapter.add("부산");
+        ListviewAdapter adapter=new ListviewAdapter(this,R.layout.item_location,data);
+        mListView.setAdapter(adapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ListView listView = (ListView) parent;
+                String item = (String) listView.getItemAtPosition(position);
+                Log.i(item, "ok");
+                Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private OnItemClickListener onClickListItem = new OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-            //Toast.makeText(getApplicationContext(),m_Adapter.getItem(arg2),Toast.LENGTH_SHORT).show();
-            if(arg2 == 0){
-                Intent i = new Intent(LocationActivity.this,LocationdetailActivity.class);
-                startActivity(i);
-                finish();
-            }
-        }
-    };
 
 
     @Override

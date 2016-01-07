@@ -59,13 +59,13 @@ public class BirthActivity extends ActionBarActivity implements View.OnClickList
 
                 switch (v.getId()) {
                     case R.id.manbtn://male
-                        male.setBackgroundResource(R.drawable.man_button_on);
-                        female.setBackgroundResource(R.drawable.woman_button_off);
+                        //male.setBackgroundResource(R.drawable.man_button_on);
+                        //female.setBackgroundResource(R.drawable.woman_button_off);
                         selectGender = "M";
                         break;
                     case R.id.womanbtn://female
-                        male.setBackgroundResource(R.drawable.man_button_off);
-                        female.setBackgroundResource(R.drawable.woman_button_on);
+                        //male.setBackgroundResource(R.drawable.man_button_off);
+                        //female.setBackgroundResource(R.drawable.woman_button_on);
                         selectGender = "F";
                         break;
                 }
